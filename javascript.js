@@ -2,6 +2,7 @@ var random = ['harrypotter', 'poudlard', 'voldemort', 'developpement', 'lensois'
 var mathrandom = random[Math.floor(Math.random()*random.length)];
 var motcorrect = 0;
 var vie = 0;
+var chance = 10;
 
 var tableau = [];
 
@@ -11,6 +12,9 @@ function reset () {
 
     document.getElementById('texte').value = '';
     document.getElementById('texte').focus();
+    document.getElementById('facile').style.opacity = '1';
+    document.getElementById('normal').style.opacity = '1';
+    document.getElementById('difficile').style.opacity = '1';
 }
 var lettre;
 
@@ -59,10 +63,12 @@ document.getElementById('envoyer').addEventListener("click",
          console.log(vie);
      }
 
-     document.getElementById('chance').innerHTML = 'Vous avez utilisé ' + vie  + ' vie sur 10!';
+     document.getElementById('chance').innerHTML = 'Vous avez utilisé ' + vie + ' ' + 'sur' + ' ' +  chance + '!';
+     document.getElementById('utiliser').innerHTML += lettre + ' / ' ;
 
-     if ( vie >= 10 ) {
-         document.getElementById('indication').innerHTML = "Vous avez Perdu !!!!";
+
+     if ( vie >= chance ) {
+         document.getElementById('indication').innerHTML = "Vous avez Perdu !!!! Le Mot à trouver était : " + ' ' + mathrandom;
          document.getElementById('indication').style.color = 'red';
          document.getElementById('envoyer').style.display = 'none';
          document.getElementById('image').style.height = '200px';
@@ -87,27 +93,6 @@ document.getElementById('reset').addEventListener("click",
         document.location.reload(true)
 });
 
-// Mode de Difficulté
-
-/*document.getElementById('facile').addEventListener("click",
-
-    function () {
-
-    });
-
-
-document.getElementById('normal').addEventListener("click",
-
-    function () {
-
-});
-
-document.getElementById('difficile').addEventListener("click",
-
-    function () {
-
-});*/
-
 function antichit() {
 
     for ( var t = 0; t < tableau.length; t++) {
@@ -118,3 +103,37 @@ function antichit() {
         }
     }
 }
+
+// Mode de Difficulté
+
+document.getElementById('facile').addEventListener("click",
+
+    function () {
+
+    chance;
+    document.getElementById('chance').innerHTML = 'Vous avez utilisé ' + vie  + ' vie sur 10!';
+        document.getElementById('difficile').style.opacity = '0';
+        document.getElementById('normal').style.opacity = '0';
+    });
+
+
+document.getElementById('normal').addEventListener("click",
+
+    function () {
+
+    chance = 5;
+    document.getElementById('chance').innerHTML = 'Vous avez utilisé ' + vie  + ' vie sur 5!';
+        document.getElementById('facile').style.opacity = '0';
+        document.getElementById('difficile').style.opacity = '0';
+});
+
+document.getElementById('difficile').addEventListener("click",
+
+    function () {
+
+    chance = 3;
+    document.getElementById('chance').innerHTML = 'Vous avez utilisé ' + vie  + ' vie sur 3!';
+    document.getElementById('facile').style.opacity = '0';
+    document.getElementById('normal').style.opacity = '0';
+
+});

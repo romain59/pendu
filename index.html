@@ -10,11 +10,7 @@
 
 </head>
 <body>
-<div class="container">
-    <button class="button" id="facile">Facile</button>
-    <button class="button" id="normal">Normal</button>
-    <button class="button" id="difficile">Difficile</button>
-</div>
+
 <h1>Le Jeux du Pendu</h1>
 
 <p>Testez vos connaissance avec ce Jeux !</p>
@@ -58,7 +54,8 @@
 </div>
 
 <p id="indication"></p>
-<p id="chance">Vous avez utilisé 0 vie sur 10 !</p>
+<p id="chance"></p>
+<div id="utiliser">Vous avez utilisé les lettres : </div>
 
 <div><img src="image/pendu.jpg" alt="pendu" id="image"></div>
 <div><img src="https://media2.giphy.com/media/3o7TKJhBfNCiispgDm/giphy.gif?cid=3640f6095beaee3b595a42546369a432" alt="Pendu Gagné" id="image2">
@@ -67,9 +64,13 @@
     <input type="text" placeholder="Entrez une lettre" id="texte" maxlength="1" autofocus>
     <button id="envoyer" class="button2">Envoyer</button>
     <button id="reset" class="button2">Reset</button>
-
 </div>
 
+<div class="container">
+    <button class="button" id="facile">Facile</button>
+    <button class="button" id="normal">Normal</button>
+    <button class="button" id="difficile">Difficile</button>
+</div>
 
 <script src="javascript.js" type="text/javascript"></script>
 </body>
