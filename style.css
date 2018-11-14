@@ -27,6 +27,11 @@ input {
     height: 75px;
 }
 
+.button3 {
+    width: 75px;
+    height: 30px;
+}
+
 #reponse {
     text-align: center;
     font-size: 30px;
@@ -42,3 +47,4 @@ img {
     width: 200px;
     height: 0px;
 }
+

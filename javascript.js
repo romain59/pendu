@@ -3,7 +3,7 @@ var mathrandom = random[Math.floor(Math.random()*random.length)];
 var motcorrect = 0;
 var vie = 0;
 var chance = 10;
-
+var lettre;
 var tableau = [];
 
 // Reset l'input
@@ -12,11 +12,7 @@ function reset () {
 
     document.getElementById('texte').value = '';
     document.getElementById('texte').focus();
-    document.getElementById('facile').style.opacity = '1';
-    document.getElementById('normal').style.opacity = '1';
-    document.getElementById('difficile').style.opacity = '1';
 }
-var lettre;
 
 // Contenu du Pendu
 
@@ -31,7 +27,6 @@ document.getElementById('envoyer').addEventListener("click",
             tableau.push(lettre);
             console.log(tableau);
 
-            reset();
 
         for (var i = 0 ; i < mathrandom.length ; i++) {
 
@@ -74,8 +69,7 @@ document.getElementById('envoyer').addEventListener("click",
          document.getElementById('image').style.height = '200px';
      }
 
-
-
+            reset();
         }});
 
 // Mot caché
@@ -114,6 +108,8 @@ document.getElementById('facile').addEventListener("click",
     document.getElementById('chance').innerHTML = 'Vous avez utilisé ' + vie  + ' vie sur 10!';
         document.getElementById('difficile').style.opacity = '0';
         document.getElementById('normal').style.opacity = '0';
+        document.getElementById('facile').style.backgroundColor = 'red';
+        document.getElementById('facile').style.color = 'white';
     });
 
 
@@ -122,9 +118,11 @@ document.getElementById('normal').addEventListener("click",
     function () {
 
     chance = 5;
-    document.getElementById('chance').innerHTML = 'Vous avez utilisé ' + vie  + ' vie sur 5!';
+        document.getElementById('chance').innerHTML = 'Vous avez utilisé ' + vie  + ' vie sur 5!';
         document.getElementById('facile').style.opacity = '0';
         document.getElementById('difficile').style.opacity = '0';
+        document.getElementById('normal').style.backgroundColor = 'red';
+        document.getElementById('normal').style.color = 'white';
 });
 
 document.getElementById('difficile').addEventListener("click",
@@ -135,5 +133,7 @@ document.getElementById('difficile').addEventListener("click",
     document.getElementById('chance').innerHTML = 'Vous avez utilisé ' + vie  + ' vie sur 3!';
     document.getElementById('facile').style.opacity = '0';
     document.getElementById('normal').style.opacity = '0';
+    document.getElementById('difficile').style.backgroundColor = 'red';
+    document.getElementById('difficile').style.color = 'white';
 
 });
