@@ -3,6 +3,8 @@ var mathrandom = random[Math.floor(Math.random()*random.length)];
 var motcorrect = 0;
 var vie = 0;
 
+var tableau = [];
+
 // Reset l'input
 
 function reset () {
@@ -10,33 +12,39 @@ function reset () {
     document.getElementById('texte').value = '';
     document.getElementById('texte').focus();
 }
+var lettre;
 
 // Contenu du Pendu
 
 document.getElementById('envoyer').addEventListener("click",
 
-    function niveaux () {
+    function  () {
+
+        lettre = document.getElementById('texte').value;
+
+        if (!antichit()) {
+
+            tableau.push(lettre);
+            console.log(tableau);
+
+            reset();
 
         for (var i = 0 ; i < mathrandom.length ; i++) {
 
-            var lettre = document.getElementById('texte').value;
-
             console.log(mathrandom);
-            console.log(lettre);
+
 
             if ( lettre == mathrandom[i] ){
-
-            if ( document.getElementById('lettre' + i).innerHTML = '_') {
                 motcorrect ++;
                 document.getElementById("lettre" + i ).innerHTML = lettre;
                 document.getElementById("lettre" + i ).style.color = 'red';
 
-            }}}
+            }}
 
         if ( motcorrect === mathrandom.length) {
             document.getElementById('indication').innerHTML = "Félicitations !!!!";
             document.getElementById('indication').style.color = 'green';
-            document.getElementById('image2').style.height = '300px';
+            document.getElementById('image2').style.height = '200px';
         }
 
         else {
@@ -57,11 +65,12 @@ document.getElementById('envoyer').addEventListener("click",
          document.getElementById('indication').innerHTML = "Vous avez Perdu !!!!";
          document.getElementById('indication').style.color = 'red';
          document.getElementById('envoyer').style.display = 'none';
-         document.getElementById('image').style.height = '300px';
+         document.getElementById('image').style.height = '200px';
      }
 
-        reset();
-});
+
+
+        }});
 
 // Mot caché
 
@@ -80,7 +89,7 @@ document.getElementById('reset').addEventListener("click",
 
 // Mode de Difficulté
 
-document.getElementById('facile').addEventListener("click",
+/*document.getElementById('facile').addEventListener("click",
 
     function () {
 
@@ -97,4 +106,15 @@ document.getElementById('difficile').addEventListener("click",
 
     function () {
 
-});
+});*/
+
+function antichit() {
+
+    for ( var t = 0; t < tableau.length; t++) {
+
+        if (lettre == tableau[t]) {
+
+            return true;
+        }
+    }
+}
